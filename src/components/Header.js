@@ -1,23 +1,27 @@
-import PropTypes from 'prop-types'
-import Button from './Button';
+import PropTypes from "prop-types";
+import Button from "./Button";
 
-const Header = () => {
+const Header = ({ title, onAddTask, showAddTask }) => {
   return (
     // <header style={{color:"red"}}>
-    <header className='header'>
-        <h1>React Task Tracker</h1>
-        <Button color='green' text='Add' />
+    <header className="header">
+      <h1>{title}</h1>
+      <Button
+        onClick={onAddTask}
+        color={showAddTask ? "black" : "green"}
+        text={showAddTask ? "Close" : "Add"}
+      />
     </header>
-  )
-}
+  );
+};
 
 Header.defaultProps = {
-    title: "Hello myDefault"
+  title: "Task Tracker",
 };
 
 Header.propTypes = {
-    title: PropTypes.string   // this is strongly typing the title to be a string
-}
+  title: PropTypes.string, // this is strongly typing the title to be a string
+};
 
 // CSS in JS
 // const headingStyle = {
@@ -25,4 +29,4 @@ Header.propTypes = {
 //     backgroundColor: 'black'
 // }
 
-export default Header
+export default Header;
